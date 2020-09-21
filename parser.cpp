@@ -9,7 +9,7 @@ Parser::Parser(const std::string file) {
     f.open(file);
     std::string line;
     while (std::getline(f, line)) {
-        size_t ind = line.find("//");
+        const size_t ind = line.find("//");
         if (ind != std::string::npos) line = line.substr(0, ind);
         bool lastWasSpace = false;
         // Only one space between words
@@ -55,8 +55,8 @@ Command Parser::commandType(void) {
 }
 
 std::string Parser::arg1(void) {
-    size_t starting_ind = cur_line.find(' ');
-    size_t ending_ind = cur_line.rfind(' ');
+    const size_t starting_ind = cur_line.find(' ');
+    const size_t ending_ind = cur_line.rfind(' ');
     if (starting_ind != std::string::npos) {
         if (ending_ind != std::string::npos) {
             return cur_line.substr(starting_ind + 1,
@@ -70,7 +70,7 @@ std::string Parser::arg1(void) {
 }
 
 int Parser::arg2(void) {
-    size_t starting_ind = cur_line.rfind(' ');
+    const size_t starting_ind = cur_line.rfind(' ');
     if (starting_ind != std::string::npos &&
         starting_ind != cur_line.find(' ')) {
         return std::stoi(cur_line.substr(starting_ind + 1));

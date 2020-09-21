@@ -10,7 +10,6 @@
   addr is where to save it to
  */
 #define popStack(addr) do { \
-    writeLine("// popStack"); \
     writeLine("@SP"); \
     writeLine("M=M-1"); \
     writeLine("A=M"); \
@@ -26,7 +25,6 @@
   addr is what to push to the stack
 */
 #define pushStack(addr) do { \
-    writeLine("// pushStack"); \
     writeLine("@" << addr); \
     writeLine("D=M"); \
     writeLine("@SP"); \
@@ -38,7 +36,6 @@
 
 // Takes the operand from R13 and performs the operation, saves to R15
 #define oneOperandOperation(operation) do { \
-    writeLine("// oneOperandOperation"); \
     writeLine("@R13"); \
     writeLine("D=" << operation << "M"); \
     writeLine("@R15"); \
@@ -47,7 +44,6 @@
 
 // Takes the operands from R13 and R14 and performs the operation, saves to R15
 #define twoOperandOperation(operation) do { \
-    writeLine("// twoOperandOperation"); \
     writeLine("@R13"); \
     writeLine("D=M"); \
     writeLine("@R14"); \
@@ -58,7 +54,6 @@
 
 // uses jump to compare R13 and R14, if jump condition is met R15 is -1, else 0
 #define compareTwoOperands(jump, nr) do { \
-    writeLine("// compareTwoOperands"); \
     writeLine("@R13"); \
     writeLine("D=M"); \
     writeLine("@R14"); \
